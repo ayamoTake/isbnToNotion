@@ -6,7 +6,6 @@ export const handler = {
         const title = form.get("title")?.toString() ?? "";
         const isbn = form.get("isbn")?.toString() ?? "";
         const subtitle = form.get("subtitle")?.toString() ?? "";
-        // const author = form.get("author")?.toString().replace(/,/g, " ") ?? "";
         const authors = form.getAll("author").map(name => name.toString().trim()).flatMap((name: string) =>
             name.includes("&")
                 ? name.split("&").map(n => n.trim())
@@ -69,7 +68,7 @@ export const handler = {
         if (!res.ok) {
             const errorBody = await res.text();
             console.error("エラー詳細:", errorBody);
-            return new Response(`登録失敗にゃ…: ${errorBody}`, { status: 500 });
+            return new Response(`登録失敗: ${errorBody}`, { status: 500 });
         }
 
         const url = new URL(req.url);

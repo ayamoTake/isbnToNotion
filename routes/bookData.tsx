@@ -57,9 +57,6 @@ export const handler: Handlers = {
             }
 
             author = summary.author.replace(/[, ]\d{4}-/g, "&")
-            // author = summary.author.split(/ \d{4}-/g).map((name: string) => {
-            //   return name.split(",").reverse().join(" ");
-            // }).join("&") || "";
             image = summary.cover || "";
             publisher = summary.publisher || "";
           }
